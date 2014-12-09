@@ -46,7 +46,6 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Object[] args)
-            where T : IFormattable
         {
             return JoinFormat(list, separator, format, Thread.CurrentThread.CurrentCulture, args);
         }
@@ -79,7 +78,6 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, IFormatProvider formatProvider, params Object[] args)
-            where T : IFormattable
         {
             return String.Join(separator, list.Select(item => String.Format(formatProvider, format, item, args)));
         }
@@ -95,7 +93,6 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, Func<T, object[]> predicate)
-            where T : IFormattable
         {
             return String.Join(separator, list.Select(item => String.Format(format, predicate(item))));
         }
@@ -110,8 +107,7 @@ namespace ExtensionLib
         /// <param name="predicate">A function that supplies the objects to be used within <see cref="String.Format(String, object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
-        public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Func<T, object>[] predicate)
-            where T : IFormattable
+        public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Func<T, Object>[] predicate)
         {
             return JoinFormat(list, separator, format, Thread.CurrentThread.CurrentCulture, predicate);
         }
@@ -128,7 +124,6 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, IFormatProvider formatProvider, Func<T, object[]> predicate)
-            where T : IFormattable
         {
             return String.Join(separator, list.Select(item => String.Format(formatProvider, format, predicate(item))));
         }
@@ -144,8 +139,7 @@ namespace ExtensionLib
         /// <param name="predicate">An array that contains zero or more functions that provide objects to be used within <see cref="String.Format(String, object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
-        public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, IFormatProvider formatProvider, params Func<T, object>[] predicate)
-            where T : IFormattable
+        public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, IFormatProvider formatProvider, params Func<T, Object>[] predicate)
         {
             return String.Join(separator, list.Select(item => String.Format(formatProvider, format, predicate.Select(x => x(item)).ToArray())));
         }

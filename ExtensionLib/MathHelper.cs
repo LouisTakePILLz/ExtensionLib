@@ -30,7 +30,6 @@ namespace ExtensionLib
         /// <param name="firstPoint">The first point on the plane.</param>
         /// <param name="secondPoint">The second point on the plane.</param>
         /// <returns>The euclidean distance between two points.</returns>
-        /// <exception cref="ArgumentException">The euclidean distance of two <see cref="T:System.Drawing.PointF"/>.</exception>
         public static Double Distance(PointF firstPoint, PointF secondPoint)
         {
             return firstPoint.Equals(secondPoint)
@@ -45,7 +44,6 @@ namespace ExtensionLib
         /// <param name="firstPoint">The first point on the plane.</param>
         /// <param name="secondPoint">The second point on the plane.</param>
         /// <returns>The euclidean distance of two <see cref="T:System.Drawing.PointF"/> multiplied by a given magnitude.</returns>
-        /// <exception cref="ArgumentException">The euclidean distance of two <see cref="T:System.Drawing.PointF"/>.</exception>
         public static Double Distance(Double scalar, PointF firstPoint, PointF secondPoint)
         {
             return firstPoint.Equals(secondPoint)
@@ -61,7 +59,6 @@ namespace ExtensionLib
         /// <param name="scalar">The magnitude factor of the metric.</param>
         /// <param name="vectors">An array of <typeparamref name="T"/> representing vectorial lengths.</param>
         /// <returns>The euclidean distance of the supplied vectorial lengths.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static Double Distance<T>(Double scalar, params T[] vectors)
             where T : IConvertible
         {
@@ -79,7 +76,6 @@ namespace ExtensionLib
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
         /// <returns>The euclidean distance of two <see cref="T:System.Drawing.PointF"/>.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static Double Distance<T>(IEnumerable<T> firstSeries, IEnumerable<T> secondSeries)
             where T : IConvertible
         { return Distance<T>(1, firstSeries, secondSeries); }
@@ -92,7 +88,6 @@ namespace ExtensionLib
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
         /// <returns>The euclidean distance of two <see cref="T:System.Drawing.PointF"/> multiplied by a given magnitude.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static Double Distance<T1, T2>(IEnumerable<T1> firstSeries, IEnumerable<T2> secondSeries)
             where T1 : IConvertible
             where T2 : IConvertible
@@ -106,7 +101,6 @@ namespace ExtensionLib
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
         /// <returns>The euclidean distance of the two supplied series.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static Double Distance<T>(Double scalar, IEnumerable<T> firstSeries, IEnumerable<T> secondSeries)
             where T : IConvertible
         {
@@ -130,7 +124,6 @@ namespace ExtensionLib
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
         /// <returns>The euclidean distance of the two supplied series.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public static Double Distance<T1, T2>(Double scalar, IEnumerable<T1> firstSeries, IEnumerable<T2> secondSeries)
             where T1 : IConvertible
             where T2 : IConvertible

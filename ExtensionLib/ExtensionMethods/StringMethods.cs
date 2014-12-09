@@ -27,10 +27,8 @@ namespace ExtensionLib
         /// <param name="source">The string to test.</param>
         /// <param name="value">The Unicode character to seek.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, Char value)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, Char value)
         {
             return source.IndexesOf(value, 0, source.Length);
         }
@@ -42,10 +40,9 @@ namespace ExtensionLib
         /// <param name="value">The Unicode character to seek.</param>
         /// <param name="startIndex">The search starting position.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, Char value, Int32 startIndex)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, Char value, Int32 startIndex)
         {
             return source.IndexesOf(value, startIndex, source.Length - startIndex);
         }
@@ -58,10 +55,9 @@ namespace ExtensionLib
         /// <param name="startIndex">The search starting position.</param>
         /// <param name="count">The number of character positions to examine.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, Char value, Int32 startIndex, Int32 count)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, Char value, Int32 startIndex, Int32 count)
         {
             if (source == null) throw new ArgumentNullException("source");
             if (startIndex < 0 || startIndex > source.Length)
@@ -81,10 +77,9 @@ namespace ExtensionLib
         /// <param name="startIndex">The search starting position.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value, Int32 startIndex, StringComparison comparisonType)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value, Int32 startIndex, StringComparison comparisonType)
         {
             return source.IndexesOf(value, startIndex, source.Length - startIndex, comparisonType);
         }
@@ -97,10 +92,9 @@ namespace ExtensionLib
         /// <param name="startIndex">The search starting position.</param>
         /// <param name="count">The number of character positions to examine.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value, Int32 startIndex, Int32 count)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value, Int32 startIndex, Int32 count)
         {
             return source.IndexesOf(value, startIndex, count, StringComparison.CurrentCulture);
         }
@@ -112,10 +106,9 @@ namespace ExtensionLib
         /// <param name="value">The string to seek.</param>
         /// <param name="startIndex">The search starting position.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value, Int32 startIndex)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value, Int32 startIndex)
         {
             return source.IndexesOf(value, startIndex, source.Length - startIndex, StringComparison.CurrentCulture);
         }
@@ -127,10 +120,8 @@ namespace ExtensionLib
         /// <param name="value">The string to seek.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value, StringComparison comparisonType)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value, StringComparison comparisonType)
         {
             return source.IndexesOf(value, 0, source.Length, comparisonType);
         }
@@ -141,10 +132,8 @@ namespace ExtensionLib
         /// <param name="source">The string to test.</param>
         /// <param name="value">The string to seek.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value)
         {
             return source.IndexesOf(value, 0, source.Length, StringComparison.CurrentCulture);
         }
@@ -158,41 +147,16 @@ namespace ExtensionLib
         /// <param name="count">The number of character positions to examine.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf(this String source, String value, Int32 startIndex, Int32 count, StringComparison comparisonType)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf(this String source, String value, Int32 startIndex, Int32 count, StringComparison comparisonType)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)throw new ArgumentNullException("source");
             if (value == null) throw new ArgumentNullException("value");
             if (startIndex < 0 || startIndex > source.Length)
                 throw new ArgumentOutOfRangeException("startIndex");
             if (count < 0 || startIndex > source.Length - count)
                 throw new ArgumentOutOfRangeException("count");
-
-            #region Drafts
-            // Initial approach
-            /*for (int i = startIndex; ; i += value.Length)
-            {
-                i = source.IndexOf(value, i, comparisonType);
-                if (i == -1)
-                    yield break;
-                yield return i;
-            }*/
-
-            // Faulty; yields prematurely on the first iteration
-            /*int index = startIndex + value.Length;
-            while (index >= 0)
-            {
-                index = source.IndexOf(value, index + value.Length, comparisonType);
-                yield return index;
-            }*/
-
-            // Better, however, not concise enough
-            /*int index = startIndex;
-            while ((index = source.IndexOf(value, index + value.Length, comparisonType)) != -1)
-                yield return index;*/
-            #endregion
 
             for (int i = startIndex - value.Length; (i = source.IndexOf(value, i + value.Length, count - i - value.Length, comparisonType)) != -1; )
                 yield return i;
@@ -206,10 +170,9 @@ namespace ExtensionLib
         /// <param name="source">The string to test.</param>
         /// <param name="characters">The sequence of characters to count.</param>
         /// <returns>The number of occurrences of the specified characters.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.OverflowException"></exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 CountCharacters(this String source, params Char[] characters)
-        {
+        { 
             return source.CountCharacters(characters, CultureInfo.InvariantCulture, CompareOptions.None);
         }
 
@@ -219,9 +182,8 @@ namespace ExtensionLib
         /// <param name="source">The string to test.</param>
         /// <param name="characters">The sequence of characters to count.</param>
         /// <returns>The number of occurrences of the specified characters.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.OverflowException"></exception>
-        public static Int32 CountCharacters(this String source, IEnumerable<char> characters)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static Int32 CountCharacters(this String source, IEnumerable<Char> characters)
         {
             return source.Count(x => characters.Any(c => String.CompareOrdinal(x.ToString(), c.ToString()) == 0));
         }
@@ -233,9 +195,8 @@ namespace ExtensionLib
         /// <param name="characters">The sequence of characters to count.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <returns>The number of occurrences of the specified characters.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.OverflowException"></exception>
-        public static Int32 CountCharacters(this String source, IEnumerable<char> characters, StringComparison comparisonType)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static Int32 CountCharacters(this String source, IEnumerable<Char> characters, StringComparison comparisonType)
         {
             return source.Count(x => characters.Any(c => String.Compare(x.ToString(), c.ToString(), comparisonType) == 0));
         }
@@ -248,9 +209,8 @@ namespace ExtensionLib
         /// <param name="culture">The culture that supplies culture-specific comparison information.</param>
         /// <param name="options">Options to use when performing the character comparison (such as ignoring case or symbols).</param>
         /// <returns>The number of occurrences of the specified characters.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.OverflowException"></exception>
-        public static Int32 CountCharacters(this String source, IEnumerable<char> characters, CultureInfo culture, CompareOptions options)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static Int32 CountCharacters(this String source, IEnumerable<Char> characters, CultureInfo culture, CompareOptions options)
         {
             return source.Count(x => characters.Any(c => String.Compare(x.ToString(), c.ToString(), culture, options) == 0));
         }

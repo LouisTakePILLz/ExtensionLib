@@ -25,10 +25,8 @@ namespace ExtensionLib
         /// <param name="source">The sequence to test.</param>
         /// <param name="value">The object to seek.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf<T>(this IEnumerable<T> source, T value)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        public static IEnumerable<Int32> IndexesOf<T>(this IEnumerable<T> source, T value)
         {
             var list = source as T[] ?? source.ToArray();
             return list.IndexesOf(value, 0, list.Length);
@@ -41,10 +39,9 @@ namespace ExtensionLib
         /// <param name="value">The object to seek.</param>
         /// <param name="startIndex">The search starting position.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf<T>(this IEnumerable<T> source, T value, Int32 startIndex)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf<T>(this IEnumerable<T> source, T value, Int32 startIndex)
         {
             var list = source as T[] ?? source.ToArray();
             return list.IndexesOf(value, startIndex, list.Length - startIndex);
@@ -58,10 +55,9 @@ namespace ExtensionLib
         /// <param name="startIndex">The search starting position.</param>
         /// <param name="count">The number of positions to examine.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<int> IndexesOf<T>(this IEnumerable<T> source, T value, Int32 startIndex, Int32 count)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.-or-<paramref name="count"/> is less than zero.-or-<paramref name="startIndex"/> and <paramref name="count"/> do not specify a valid section in <paramref name="source"/>.</exception>
+        public static IEnumerable<Int32> IndexesOf<T>(this IEnumerable<T> source, T value, Int32 startIndex, Int32 count)
         {
             var list = source as T[] ?? source.ToArray();
             if (source == null) throw new ArgumentNullException("source");

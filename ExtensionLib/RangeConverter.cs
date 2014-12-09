@@ -131,7 +131,7 @@ namespace ExtensionLib
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
         /// <param name="propertyValues">A dictionary of new property values. The dictionary contains a series of name-value pairs, one for each property returned from <see cref="M:ExtensionLib.RangeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])"/>.</param>
         /// <exception cref="T:System.ArgumentException">Either the Minimum or Maximum property holds invalid values.</exception>
-        /// <exception cref="T:System.ArgumentNullException"><see cref="propertyValues"/> is null.</exception>        
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="propertyValues"/> is null.</exception>        
         /// <filterpriority>1</filterpriority>
         public override Object CreateInstance(ITypeDescriptorContext context, IDictionary propertyValues)
         {

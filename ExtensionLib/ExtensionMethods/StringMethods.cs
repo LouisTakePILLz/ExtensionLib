@@ -172,7 +172,7 @@ namespace ExtensionLib
         /// <returns>The number of occurrences of the specified characters.</returns>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 CountCharacters(this String source, params Char[] characters)
-        { 
+        {
             return source.CountCharacters(characters, CultureInfo.InvariantCulture, CompareOptions.None);
         }
 

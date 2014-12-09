@@ -44,8 +44,7 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the returned elements.</typeparam>
         /// <param name="source">The sequence of bytes to compute.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
-        /// <exception cref="
-        /// T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
         /// <exception cref="T:System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
         public static T GetBytes<T>(this IEnumerable<Byte> source)

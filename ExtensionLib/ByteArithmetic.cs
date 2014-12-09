@@ -41,6 +41,9 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the returned elements.</typeparam>
         /// <param name="source">The sequence of bytes to compute.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
+        /// <exception cref="T:System.ArgumentNullException"></exception>
+        /// <exception cref="T:System.InvalidOperationException"></exception>
+        /// <exception cref="T:System.OverflowException"></exception>        
         public static T GetBytes<T>(this IEnumerable<Byte> source)
         {
             return source

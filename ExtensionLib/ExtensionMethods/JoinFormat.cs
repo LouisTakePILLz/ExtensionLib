@@ -13,8 +13,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Threading;
 
 namespace ExtensionLib
 {
@@ -32,7 +32,7 @@ namespace ExtensionLib
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String objectFormat)
             where T : IFormattable
         {
-            return JoinFormat(list, separator, objectFormat, Thread.CurrentThread.CurrentCulture);
+            return JoinFormat(list, separator, objectFormat, CultureInfo.CurrentUICulture);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Object[] args)
         {
-            return JoinFormat(list, separator, format, Thread.CurrentThread.CurrentCulture, args);
+            return JoinFormat(list, separator, format, CultureInfo.CurrentUICulture, args);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Func<T, Object>[] predicate)
         {
-            return JoinFormat(list, separator, format, Thread.CurrentThread.CurrentCulture, predicate);
+            return JoinFormat(list, separator, format, CultureInfo.CurrentUICulture, predicate);
         }
 
         /// <summary>

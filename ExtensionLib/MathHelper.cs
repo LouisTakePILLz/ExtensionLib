@@ -112,7 +112,7 @@ namespace ExtensionLib
                 throw new ArgumentException("The dimension rank of the supplied series do not match.");
             return Distance(scalar,
                 firstSeriesList.Zip(secondSeriesList,
-                    (t1, t2) => (IConvertible)(t1.ToDouble(CultureInfo.CurrentUICulture) - t2.ToDouble(CultureInfo.CurrentUICulture))).ToArray());
+                    (t1, t2) => (IConvertible) (t1.ToDouble(CultureInfo.CurrentUICulture) - t2.ToDouble(CultureInfo.CurrentUICulture))).ToArray());
         }
 
         /// <summary>

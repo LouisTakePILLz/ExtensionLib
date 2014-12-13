@@ -40,7 +40,7 @@ namespace ExtensionLib
         /// <param name="flag">One or more <see cref="T:System.Windows.Forms.ControlStyles"/> attributes to redefine.</param>
         /// <param name="value">The new state of the supplied <paramref name="flag"/> attributes.</param>
         /// <param name="control">The control to affect the style attribute(s) to.</param>
-        private static void SetControlStyle(Control control, ControlStyles flag, Boolean value)
+        public static void SetControlStyle(this Control control, ControlStyles flag, Boolean value)
         {
             MethodInfo setStyleMethod = control.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance);
             if (setStyleMethod == null)

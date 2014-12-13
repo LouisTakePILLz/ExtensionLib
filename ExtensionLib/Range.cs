@@ -78,7 +78,7 @@ namespace ExtensionLib
         /// <summary>
         /// Determines whether the provided value is inside the range.
         /// </summary>
-        /// <param name="value">The value to test</param>
+        /// <param name="value">The value to test.</param>
         /// <returns>A boolean value indicating whether the provided value is inside the range.</returns>
         public Boolean ContainsValue(T value)
         {

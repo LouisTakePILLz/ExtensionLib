@@ -109,7 +109,7 @@ namespace ExtensionLib
             if (!firstSeriesList.Any() || !secondSeriesList.Any())
                 throw new ArgumentException("An empty dimension count can not be computed.");
             if (firstSeriesList.Count() != secondSeriesList.Count())
-                throw new ArgumentException("The dimension rank of the supplied series do not match.");
+                throw new ArgumentException("The dimension ranks of the supplied series do not match.");
             return Distance(scalar,
                 firstSeriesList.Zip(secondSeriesList,
                     (t1, t2) => (IConvertible) (t1.ToDouble(CultureInfo.CurrentUICulture) - t2.ToDouble(CultureInfo.CurrentUICulture))).ToArray());

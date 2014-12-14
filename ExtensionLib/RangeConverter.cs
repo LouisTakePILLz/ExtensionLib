@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="RangeConverter.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -24,11 +29,12 @@ namespace ExtensionLib
     /// <summary>
     /// Converts a <see cref="T:ExtensionLib.Range`1"/> object from one data type to another.
     /// </summary>
+    /// <typeparam name="T">The type of the the range's units.</typeparam>
     /// <filterpriority>1</filterpriority>
     public class RangeConverter<T> : TypeConverter where T : IComparable, IFormattable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ExtensionLib.RangeConverter"/> class.
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.RangeConverter`1"/> class.
         /// </summary>
         public RangeConverter() { }
 
@@ -71,6 +77,7 @@ namespace ExtensionLib
             String str = value as String;
             if (str == null)
                 return base.ConvertFrom(context, culture, value);
+
             str = str.Trim();
             if (str.Length == 0) return null;
 
@@ -98,6 +105,7 @@ namespace ExtensionLib
         {
             if (destinationType == null)
                 throw new ArgumentNullException("destinationType");
+
             if (value is Range<T>)
             {
                 if (destinationType == typeof (String))
@@ -113,6 +121,7 @@ namespace ExtensionLib
                         converter.ConvertToString(context, culture, range.Maximum)
                     });
                 }
+
                 if (destinationType == typeof (InstanceDescriptor))
                 {
                     var range = (Range<T>) value;
@@ -121,6 +130,7 @@ namespace ExtensionLib
                         return new InstanceDescriptor(constructor, new[] { range.Minimum, range.Maximum });
                 }
             }
+
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
@@ -140,7 +150,7 @@ namespace ExtensionLib
 
             var min = propertyValues["Minimum"];
             var max = propertyValues["Maximum"];
-            if (min == null || max == null || (!(min is T) || !(max is T)))
+            if (min == null || max == null || !(min is T) || !(max is T))
                 throw new ArgumentException("Either the Minimum or Maximum property holds invalid values.");
             
             return new Range<T>((T) min, (T) max);

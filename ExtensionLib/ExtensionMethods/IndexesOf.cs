@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="IndexesOf.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -17,11 +22,15 @@ using System.Linq;
 
 namespace ExtensionLib
 {
+    /// <content>
+    /// Provides various static extension methods.
+    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>
         /// Reports the zero-based indexes of all the occurrences of the specified object in the sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to test.</param>
         /// <param name="value">The object to seek.</param>
         /// <returns>The index positions of the <paramref name="value"/> parameter.</returns>
@@ -35,6 +44,7 @@ namespace ExtensionLib
         /// <summary>
         /// Reports the zero-based indexes of all the occurrences of the specified object in the sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to test.</param>
         /// <param name="value">The object to seek.</param>
         /// <param name="startIndex">The search starting position.</param>
@@ -50,6 +60,7 @@ namespace ExtensionLib
         /// <summary>
         /// Reports the zero-based indexes of all the occurrences of the specified object in the sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to test.</param>
         /// <param name="value">The object to seek.</param>
         /// <param name="startIndex">The search starting position.</param>
@@ -60,7 +71,8 @@ namespace ExtensionLib
         public static IEnumerable<Int32> IndexesOf<T>(this IEnumerable<T> source, T value, Int32 startIndex, Int32 count)
         {
             var list = source as T[] ?? source.ToArray();
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+                throw new ArgumentNullException("source");
             if (startIndex < 0 || startIndex > list.Length)
                 throw new ArgumentOutOfRangeException("startIndex");
             if (count < 0 || startIndex > list.Length - count)

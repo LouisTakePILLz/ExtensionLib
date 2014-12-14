@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ExtensionLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("LouisTakePILLz")]
 [assembly: AssemblyProduct("ExtensionLib")]
 [assembly: AssemblyCopyright("Copyright © LouisTakePILLz 2014")]
 [assembly: AssemblyTrademark("")]

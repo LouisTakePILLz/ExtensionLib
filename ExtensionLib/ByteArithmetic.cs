@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="ByteArithmetic.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -51,9 +56,11 @@ namespace ExtensionLib
         {
             if (source == null)
                 throw new ArgumentNullException("source");
+
             IEnumerable<Byte> items = source as Byte[] ?? source.ToArray();
             if (!items.Any())
                 throw new InvalidOperationException();
+
             return items
                 .Select(x => (T) Convert.ChangeType(x, typeof (T)))
                 .Reverse()

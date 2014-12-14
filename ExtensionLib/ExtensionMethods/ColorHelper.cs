@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="ColorHelper.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -16,10 +21,13 @@ using System.Drawing;
 
 namespace ExtensionLib
 {
+    /// <content>
+    /// Provides various static extension methods.
+    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>
-        /// Interpolates two colors the R, G and B channels (while preserving the source alpha level) using a supplied scale.
+        /// Interpolates linearly two colors the R, G and B channels (while preserving the source alpha level) using a supplied scale.
         /// </summary>
         /// <param name="source">The source color to interpolate.</param>
         /// <param name="target">The target color to interpolate.</param>

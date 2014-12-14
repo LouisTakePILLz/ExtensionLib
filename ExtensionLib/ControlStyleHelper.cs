@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="ControlStyleHelper.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -37,9 +42,9 @@ namespace ExtensionLib
         /// <summary>
         /// Sets one or more <see cref="T:System.Windows.Forms.ControlStyles"/> attributes to a single control.
         /// </summary>
+        /// <param name="control">The control to affect the style attribute(s) to.</param>
         /// <param name="flag">One or more <see cref="T:System.Windows.Forms.ControlStyles"/> attributes to redefine.</param>
         /// <param name="value">The new state of the supplied <paramref name="flag"/> attributes.</param>
-        /// <param name="control">The control to affect the style attribute(s) to.</param>
         public static void SetControlStyle(this Control control, ControlStyles flag, Boolean value)
         {
             MethodInfo setStyleMethod = control.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance);

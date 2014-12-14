@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="StringMethods.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -18,6 +23,9 @@ using System.Linq;
 
 namespace ExtensionLib
 {
+    /// <content>
+    /// Provides various static extension methods.
+    /// </content>
     public static partial class ExtensionMethods
     {
         #region IndexesOf
@@ -59,7 +67,8 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
         public static IEnumerable<Int32> IndexesOf(this String source, Char value, Int32 startIndex, Int32 count)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+                throw new ArgumentNullException("source");
             if (startIndex < 0 || startIndex > source.Length)
                 throw new ArgumentOutOfRangeException("startIndex");
             if (count < 0 || startIndex > source.Length - count)
@@ -151,8 +160,10 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="startIndex"/> is outside the range of valid indexes for <paramref name="source"/>.</exception>
         public static IEnumerable<Int32> IndexesOf(this String source, String value, Int32 startIndex, Int32 count, StringComparison comparisonType)
         {
-            if (source == null)throw new ArgumentNullException("source");
-            if (value == null) throw new ArgumentNullException("value");
+            if (source == null)
+                throw new ArgumentNullException("source");
+            if (value == null)
+                throw new ArgumentNullException("value");
             if (startIndex < 0 || startIndex > source.Length)
                 throw new ArgumentOutOfRangeException("startIndex");
             if (count < 0 || startIndex > source.Length - count)

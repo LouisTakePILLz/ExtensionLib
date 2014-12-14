@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="SequenceMethods.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -18,10 +23,13 @@ using System.Linq;
 
 namespace ExtensionLib
 {
+    /// <content>
+    /// Provides various static extension methods.
+    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>
-        /// Inserts an element a given amount of time at beggining of a sequence.
+        /// Inserts an element a given amount of time at beginning of a sequence.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the sequence.</typeparam>
         /// <param name="source">The sequence to pad.</param>
@@ -58,7 +66,7 @@ namespace ExtensionLib
             Dictionary<TKey, TValue> values = new Dictionary<TKey, TValue>(source);
             while (values.Count > 0)
             {
-                TKey key = values.Keys.ElementAt(rnd.Next(0, values.Count));
+                TKey key = values.Keys.ElementAt(RandomProvider.Next(0, values.Count));
                 TValue value = values[key];
                 values.Remove(key);
 
@@ -75,7 +83,9 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 IndexOfMin<T>(this IEnumerable<T> source)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+                throw new ArgumentNullException("source");
+
             IEnumerable<T> items = source as T[] ?? source.ToArray();
             return !items.Any()
                 ? -1
@@ -94,7 +104,9 @@ namespace ExtensionLib
         /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 IndexOfMax<T>(this IEnumerable<T> source)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+                throw new ArgumentNullException("source");
+
             IEnumerable<T> items = source as T[] ?? source.ToArray();
             return !items.Any()
                 ? -1
@@ -121,6 +133,7 @@ namespace ExtensionLib
         /// <summary>
         /// Returns the number of occurrences of the specified items in a sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to test.</param>
         /// <param name="items">The items to count.</param>
         /// <returns>The number of occurrences of the specified items.</returns>
@@ -132,6 +145,7 @@ namespace ExtensionLib
         /// <summary>
         /// Returns the number of occurrences of the specified items in a sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to test.</param>
         /// <param name="items">The items to count.</param>
         /// <param name="comparer">The <see cref="T:System.Collections.IComparer"/> object used to compare the objects in the two sequences.</param>
@@ -144,6 +158,7 @@ namespace ExtensionLib
         /// <summary>
         /// Returns a specified number of contiguous elements from a given position in a sequence.
         /// </summary>
+        /// <typeparam name="T">The type of the elements in the sequence.</typeparam>
         /// <param name="source">The sequence to take from.</param>
         /// <param name="position">The amount of positions to skip before starting to take.</param>
         /// <param name="length">The amount of elements to take.</param>

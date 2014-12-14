@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="MathHelper.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -64,8 +69,10 @@ namespace ExtensionLib
         {
             if (!vectors.Any())
                 return 0;
+            
             if (vectors.Length == 1)
                 return vectors.First().ToDouble(CultureInfo.CurrentUICulture);
+
             return scalar * Math.Sqrt(vectors.Sum(t => Math.Pow(t.ToDouble(CultureInfo.CurrentUICulture), 2)));
         }
 
@@ -78,7 +85,9 @@ namespace ExtensionLib
         /// <returns>The euclidean distance of the supplied series.</returns>
         public static Double Distance<T>(IEnumerable<T> firstSeries, IEnumerable<T> secondSeries)
             where T : IConvertible
-        { return Distance<T>(1, firstSeries, secondSeries); }
+        {
+            return Distance<T>(1, firstSeries, secondSeries);
+        }
 
         /// <summary>
         /// Computes the euclidean distance of two series of matching dimension rank.
@@ -91,7 +100,9 @@ namespace ExtensionLib
         public static Double Distance<T1, T2>(IEnumerable<T1> firstSeries, IEnumerable<T2> secondSeries)
             where T1 : IConvertible
             where T2 : IConvertible
-        { return Distance(1, firstSeries, secondSeries); }
+        {
+            return Distance(1, firstSeries, secondSeries);
+        }
 
         /// <summary>
         /// Computes the projected euclidean distance of two series of matching dimension rank.
@@ -108,8 +119,10 @@ namespace ExtensionLib
             IList<T> secondSeriesList = secondSeries as T[] ?? secondSeries.ToArray();
             if (!firstSeriesList.Any() || !secondSeriesList.Any())
                 throw new ArgumentException("An empty dimension count can not be computed.");
+
             if (firstSeriesList.Count() != secondSeriesList.Count())
                 throw new ArgumentException("The dimension ranks of the supplied series do not match.");
+
             return Distance(scalar,
                 firstSeriesList.Zip(secondSeriesList,
                     (t1, t2) => (IConvertible) (t1.ToDouble(CultureInfo.CurrentUICulture) - t2.ToDouble(CultureInfo.CurrentUICulture))).ToArray());

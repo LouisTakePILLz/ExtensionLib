@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="Range.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -22,9 +27,9 @@ namespace ExtensionLib
     /// <typeparam name="T">The type of the range's units.</typeparam>
     [Serializable]
     [Browsable(false)]
-    //[Editor(typeof (RangeEditor<>), typeof (UITypeEditor))]
-    //[Editor(typeof (RangeEditor), typeof(UITypeEditor))]
-    //[TypeConverter(typeof (RangeConverter<>))]
+    ////[Editor(typeof (RangeEditor<>), typeof (UITypeEditor))]
+    ////[Editor(typeof (RangeEditor), typeof(UITypeEditor))]
+    ////[TypeConverter(typeof (RangeConverter<>))]
     public struct Range<T> where T : IComparable, IFormattable
     {
         /// <summary>
@@ -33,24 +38,24 @@ namespace ExtensionLib
         public static readonly Range<T> Empty = new Range<T>(); 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ExtensionLib.Range`1"/> class with the specified extremums.
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.Range`1"/> struct with the specified extrema.
         /// </summary>
         /// <param name="minimum">The lower-bound value of the range.</param>
         /// <param name="maximum">The upper-bound value of the range.</param>
         public Range(T minimum, T maximum) : this()
         {
-            Minimum = minimum;
-            Maximum = maximum;
+            this.Minimum = minimum;
+            this.Maximum = maximum;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ExtensionLib.Range`1"/> class with the specified extremums.
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.Range`1"/> struct with the specified extrema.
         /// </summary>
         /// <param name="value">The value held by both the lower- and the upper-bound.</param>
         public Range(T value) : this()
         {
-            Minimum = value;
-            Maximum = value;
+            this.Minimum = value;
+            this.Maximum = value;
         }
 
         /// <summary>
@@ -67,13 +72,19 @@ namespace ExtensionLib
         /// Returns a string that represents this range.
         /// </summary>
         /// <returns>A human-readable representation of this range.</returns>
-        public override String ToString() { return String.Format("[{0}, {1}]", this.Minimum, this.Maximum); }
-        
+        public override String ToString()
+        {
+            return String.Format("[{0}, {1}]", this.Minimum, this.Maximum);
+        }
+
         /// <summary>        
         /// Determines if the range is valid.
         /// </summary>
         /// <returns>A boolean value indicating whether the range is valid (i.e. if <see cref="P:ExtensionLib.Range.Minimum"/> is lesser or equal to <see cref="P:ExtensionLib.Range.Maximum"/>.</returns>
-        public Boolean IsValid() { return this.Minimum.CompareTo(this.Maximum) <= 0; }
+        public Boolean IsValid()
+        {
+            return this.Minimum.CompareTo(this.Maximum) <= 0;
+        }
 
         /// <summary>
         /// Determines whether the provided value is inside the range.
@@ -89,7 +100,7 @@ namespace ExtensionLib
         /// Determines whether the bounds of this range are situated within those of the supplied one.
         /// </summary>
         /// <param name="range">The parent range to test against.</param>
-        /// <returns>A boolean value indicating whether the extremums of this range is inclusive.</returns>
+        /// <returns>A boolean value indicating whether the extrema of this range are inclusive.</returns>
         public Boolean IsInsideRange(Range<T> range)
         {
             return this.IsValid() && range.IsValid() && range.ContainsValue(this.Minimum) && range.ContainsValue(this.Maximum);

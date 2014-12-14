@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="ExtensionMethods.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -20,6 +25,6 @@ namespace ExtensionLib
     /// </summary>
     public static partial class ExtensionMethods
     {
-        private static readonly Random rnd = new Random();
+        private static readonly Random RandomProvider = new Random();
     }
 }

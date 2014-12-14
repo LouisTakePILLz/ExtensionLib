@@ -1,4 +1,9 @@
-﻿// Copyright 2014 LouisTakePILLz
+﻿//-----------------------------------------------------------------------
+// <copyright file="Shuffle.cs" company="LouisTakePILLz">
+// Copyright © 2014 LouisTakePILLz
+// <author>LouisTakePILLz</author>
+// </copyright>
+//-----------------------------------------------------------------------
 
 /*
  * This program is free software: you can redistribute it and/or modify it under the terms of
@@ -16,6 +21,9 @@ using System.Linq;
 
 namespace ExtensionLib
 {
+    /// <content>
+    /// Provides various static extension methods.
+    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>
@@ -30,7 +38,7 @@ namespace ExtensionLib
             int n = elements.Length;
             while (n-- > 1)
             {
-                int k = rnd.Next(n + 1);
+                int k = RandomProvider.Next(n + 1);
                 T value = elements[k];
                 elements[k] = elements[n];
                 elements[n] = value;

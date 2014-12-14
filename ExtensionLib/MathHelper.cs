@@ -56,7 +56,7 @@ namespace ExtensionLib
         /// Computes the projected euclidean distance of two <see cref="T:System.Drawing.PointF"/>.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the <paramref name="vectors"/> parameter.</typeparam>
-        /// <param name="scalar">The magnitude factor of the metric.</param>
+        /// <param name="scalar">The magnitude factor of the resulting metric.</param>
         /// <param name="vectors">An array of <typeparamref name="T"/> representing vectorial lengths.</param>
         /// <returns>The euclidean distance of the supplied vectorial lengths.</returns>
         public static Double Distance<T>(Double scalar, params T[] vectors)
@@ -75,7 +75,7 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements of the series.</typeparam>
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
-        /// <returns>The euclidean distance of two <see cref="T:System.Drawing.PointF"/>.</returns>
+        /// <returns>The euclidean distance of the supplied series.</returns>
         public static Double Distance<T>(IEnumerable<T> firstSeries, IEnumerable<T> secondSeries)
             where T : IConvertible
         { return Distance<T>(1, firstSeries, secondSeries); }
@@ -87,7 +87,7 @@ namespace ExtensionLib
         /// <typeparam name="T2">The type of the elements in <paramref name="secondSeries"/>.</typeparam>
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
-        /// <returns>The euclidean distance of two <see cref="T:System.Drawing.PointF"/> multiplied by a given magnitude.</returns>
+        /// <returns>The euclidean distance of the supplied series multiplied by a given magnitude.</returns>
         public static Double Distance<T1, T2>(IEnumerable<T1> firstSeries, IEnumerable<T2> secondSeries)
             where T1 : IConvertible
             where T2 : IConvertible
@@ -97,10 +97,10 @@ namespace ExtensionLib
         /// Computes the projected euclidean distance of two series of matching dimension rank.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the series.</typeparam>
-        /// <param name="scalar">The magnitude factor of the metric.</param>
+        /// <param name="scalar">The magnitude factor of the resulting metric.</param>
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
-        /// <returns>The euclidean distance of the two supplied series.</returns>
+        /// <returns>The euclidean distance of the supplied series.</returns>
         public static Double Distance<T>(Double scalar, IEnumerable<T> firstSeries, IEnumerable<T> secondSeries)
             where T : IConvertible
         {
@@ -120,10 +120,10 @@ namespace ExtensionLib
         /// </summary>
         /// <typeparam name="T1">The type of the elements in <paramref name="firstSeries"/>.</typeparam>
         /// <typeparam name="T2">The type of the elements in <paramref name="secondSeries"/>.</typeparam>
-        /// <param name="scalar">The magnitude factor of the metric.</param>
+        /// <param name="scalar">The magnitude factor of the resulting metric.</param>
         /// <param name="firstSeries">The first series of values.</param>
         /// <param name="secondSeries">The second series of values.</param>
-        /// <returns>The euclidean distance of the two supplied series.</returns>
+        /// <returns>The euclidean distance of the supplied series multiplied by a given magnitude.</returns>
         public static Double Distance<T1, T2>(Double scalar, IEnumerable<T1> firstSeries, IEnumerable<T2> secondSeries)
             where T1 : IConvertible
             where T2 : IConvertible

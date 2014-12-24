@@ -5,15 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ExtensionLib")]
+[assembly: AssemblyTitle("ExtensionLibTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("LouisTakePILLz")]
-[assembly: AssemblyProduct("ExtensionLib")]
-[assembly: AssemblyCopyright("Copyright © LouisTakePILLz 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ExtensionLibTests")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("ExtensionLibTests")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9c6c94db-23eb-42fb-ae3e-1bb286a893b4")]
+[assembly: Guid("98dff074-f3c8-4c7d-be1b-fbecccb86f83")]
 
 // Version information for an assembly consists of the following four values:
 //

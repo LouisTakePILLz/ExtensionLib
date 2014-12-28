@@ -62,6 +62,7 @@
     <Compile Include="ExtensionMethods\Shuffle.cs" />
     <Compile Include="ExtensionMethods\StringMethods.cs" />
     <Compile Include="RangeConverter.cs" />
+    <Compile Include="SocketMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

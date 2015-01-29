@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="SocketMethods.cs" company="LouisTakePILLz">
-// Copyright © 2014 LouisTakePILLz
+// Copyright © 2015 LouisTakePILLz
 // <author>LouisTakePILLz</author>
 // </copyright>
 //-----------------------------------------------------------------------

@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="IndexesOf.cs" company="LouisTakePILLz">
-// Copyright © 2014 LouisTakePILLz
+// Copyright © 2015 LouisTakePILLz
 // <author>LouisTakePILLz</author>
 // </copyright>
 //-----------------------------------------------------------------------
@@ -22,9 +22,6 @@ using System.Linq;
 
 namespace ExtensionLib
 {
-    /// <content>
-    /// Provides various static extension methods.
-    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>

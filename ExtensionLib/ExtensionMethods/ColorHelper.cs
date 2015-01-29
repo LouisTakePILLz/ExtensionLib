@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ColorHelper.cs" company="LouisTakePILLz">
-// Copyright © 2014 LouisTakePILLz
+// Copyright © 2015 LouisTakePILLz
 // <author>LouisTakePILLz</author>
 // </copyright>
 //-----------------------------------------------------------------------
@@ -21,9 +21,6 @@ using System.Drawing;
 
 namespace ExtensionLib
 {
-    /// <content>
-    /// Provides various static extension methods.
-    /// </content>
     public static partial class ExtensionMethods
     {
         /// <summary>

@@ -17,6 +17,7 @@
  */
 
 using System;
+using System.Linq;
 using ExtensionLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -26,7 +27,7 @@ namespace ExtensionLibTests
     public class ByteArithmeticTestUnit
     {
         [TestMethod]
-        public void TestByteEndianness()
+        public void TestByteDefaultEndianness()
         {
             const UInt32 value = 0x90AB12CD;
             byte[] bytes = BitConverter.GetBytes(value);
@@ -37,6 +38,29 @@ namespace ExtensionLibTests
 
             lengthBytes = new byte[] { 0x00, 0x68, 0x2a, 0x08 };
             Assert.AreEqual((UInt32) 0x082a6800, lengthBytes.GetBytes<UInt32>());
+        }
+
+        [TestMethod]
+        public void TestByteEndianness()
+        {
+            const UInt32 value = 0x90AB12CD;
+            byte[] bytesLE, bytesBE;
+            if (BitConverter.IsLittleEndian)
+            {
+                bytesLE = BitConverter.GetBytes(value);
+                bytesBE = BitConverter.GetBytes(value).Reverse().ToArray();
+            }
+            else
+            {
+                bytesLE = BitConverter.GetBytes(value).Reverse().ToArray();
+                bytesBE = BitConverter.GetBytes(value);
+            }
+            Assert.AreEqual(
+                bytesLE.GetBytes<UInt32>(ByteOrder.LittleEndian),
+                bytesBE.GetBytes<UInt32>(ByteOrder.BigEndian));
+            Assert.AreEqual(
+                bytesLE.GetBytes<UInt32>(ByteOrder.BigEndian),
+                bytesBE.GetBytes<UInt32>(ByteOrder.LittleEndian));
         }
     }
 }

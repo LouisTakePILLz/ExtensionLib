@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteArithmetic.cs" />
+    <Compile Include="ByteOrder.cs" />
     <Compile Include="ExtensionMethods\ColorHelper.cs" />
     <Compile Include="ControlStyleHelper.cs" />
     <Compile Include="ExtensionMethods\ExtensionMethods.cs" />

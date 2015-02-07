@@ -27,6 +27,7 @@ namespace ExtensionLib
         /// The least significant byte (lowest address) is stored first.
         /// </summary>
         LittleEndian,
+
         /// <summary>
         /// The most significant byte (highest address) is stored first.
         /// </summary>

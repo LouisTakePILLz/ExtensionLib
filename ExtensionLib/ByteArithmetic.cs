@@ -36,9 +36,9 @@ namespace ExtensionLib
         /// <param name="length">The amount of bytes to extract.</param>
         /// <param name="endianness">The order in which bytes are read.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
-        /// <exception cref="System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
-        /// <exception cref="System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
+        /// <exception cref="T:System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
         public static T GetBytes<T>(this IEnumerable<Byte> source, Int32 position, Int32 length, ByteOrder endianness)
         {
             return GetBytes<T>(source.TakeRange(position, length), endianness);
@@ -52,9 +52,9 @@ namespace ExtensionLib
         /// <param name="position">The starting position of the bytes to extract.</param>
         /// <param name="length">The amount of bytes to extract.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
-        /// <exception cref="System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
-        /// <exception cref="System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
+        /// <exception cref="T:System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
         public static T GetBytes<T>(this IEnumerable<Byte> source, Int32 position, Int32 length)
         {
             return GetBytes<T>(source.TakeRange(position, length));
@@ -66,9 +66,9 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the returned elements.</typeparam>
         /// <param name="source">The sequence of bytes to compute.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
-        /// <exception cref="System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
-        /// <exception cref="System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
+        /// <exception cref="T:System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
         public static T GetBytes<T>(this IEnumerable<Byte> source)
         {
             return GetBytes<T>(source, BitConverter.IsLittleEndian ? ByteOrder.LittleEndian : ByteOrder.BigEndian);
@@ -81,9 +81,9 @@ namespace ExtensionLib
         /// <param name="source">The sequence of bytes to compute.</param>
         /// <param name="endianness">The order in which bytes are read.</param>
         /// <returns>The equivalent object of the bytes from the parsed region in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
-        /// <exception cref="System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
-        /// <exception cref="System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException"><paramref name="source"/> contains no elements.</exception>
+        /// <exception cref="T:System.OverflowException">The sum of the elements in <paramref name="source"/> exceeds the maximum value of the <typeparamref name="T"/> type.</exception>
         public static T GetBytes<T>(this IEnumerable<Byte> source, ByteOrder endianness)
         {
             if (source == null)

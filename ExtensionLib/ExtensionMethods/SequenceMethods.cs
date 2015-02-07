@@ -77,7 +77,7 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">A sequence of values to determine the minimum value of.</param>
         /// <returns>The index of the minimum value in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 IndexOfMin<T>(this IEnumerable<T> source)
         {
             if (source == null)
@@ -98,7 +98,7 @@ namespace ExtensionLib
         /// <typeparam name="T">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">A sequence of values to determine the maximum value of.</param>
         /// <returns>The index of the maximum value in the sequence.</returns>
-        /// <exception cref="System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static Int32 IndexOfMax<T>(this IEnumerable<T> source)
         {
             if (source == null)

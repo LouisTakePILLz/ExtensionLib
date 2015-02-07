@@ -29,7 +29,7 @@ namespace ExtensionLib
     [Browsable(false)]
     ////[Editor(typeof (RangeEditor<>), typeof (UITypeEditor))]
     ////[Editor(typeof (RangeEditor), typeof(UITypeEditor))]
-    ////[TypeConverter(typeof (RangeConverter<>))]
+    [TypeConverter(typeof (RangeConverter<>))]
     public struct Range<T> where T : IComparable, IFormattable
     {
         /// <summary>

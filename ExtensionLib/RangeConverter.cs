@@ -27,10 +27,10 @@ using System.Reflection;
 namespace ExtensionLib
 {
     /// <summary>
-    /// Converts a <see cref="T:ExtensionLib.Range`1"/> object from one data type to another.
+    /// Provides a type converter to convert a <see cref="T:ExtensionLib.Range`1"/> object from one data type to another.
     /// </summary>
     /// <typeparam name="T">The type of the the range's units.</typeparam>
-    /// <filterpriority>1</filterpriority>
+    /// <remarks>Not yet supported, as type converters can't handle generic types.</remarks>
     public class RangeConverter<T> : TypeConverter where T : IComparable, IFormattable
     {
         /// <summary>
@@ -43,8 +43,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A boolean value indicating whether this type can be converted to a <see cref="T:ExtensionLib.Range`1"/>.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <param name="sourceType">The source type to test.</param>
-        /// <filterpriority>1</filterpriority>
+        /// <param name="sourceType">The source <see cref="T:System.Type"/> to test.</param>
         public override Boolean CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
             return sourceType == typeof (String) || base.CanConvertFrom(context, sourceType);
@@ -55,23 +54,21 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A boolean value indicating whether <see cref="T:ExtensionLib.Range`1"/> can be converted to a given destination type.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <param name="destinationType">The destination type to test.</param>
-        /// <filterpriority>1</filterpriority>
+        /// <param name="destinationType">The destination <see cref="T:System.Type"/> to test.</param>
         public override Boolean CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
             return destinationType == typeof (InstanceDescriptor) || base.CanConvertTo(context, destinationType);
         }
 
         /// <summary>
-        /// Converts the specified object to a <see cref="T:ExtensionLib.Range`1"/> object.
+        /// Converts the specified object to a <see cref="T:ExtensionLib.Range`1"/> object, using the specified context and culture information.
         /// </summary>
-        /// <returns>The converted object.</returns>
+        /// <returns>An <see cref="T:System.Object"/> that represents the converted value.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <param name="culture">An object that contains culture-specific information, such as the language, calendar, and cultural conventions associated with a specific culture.</param>
-        /// <param name="value">The object to convert.</param>
-        /// <exception cref="System.NotSupportedException">The conversion couldn't be completed.</exception>
-        /// <exception cref="System.ArgumentException">The object could not be parsed.</exception>
-        /// <filterpriority>1</filterpriority>
+        /// <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use as the current culture.</param>
+        /// <param name="value">The <see cref="T:System.Object"/> to convert.</param>
+        /// <exception cref="T:System.NotSupportedException">The conversion couldn't be completed.</exception>
+        /// <exception cref="T:System.ArgumentException">The object could not be parsed.</exception>
         public override Object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
         {
             String str = value as String;
@@ -92,15 +89,14 @@ namespace ExtensionLib
         }
 
         /// <summary>
-        /// Converts the specified object to the specified type.
+        /// Converts the specified object to the specified <see cref="T:System.Type"/>, using the specified context and culture information.
         /// </summary>
-        /// <returns>The converted object.</returns>
+        /// <returns>An <see cref="T:System.Object"/> that represents the converted value.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <param name="culture">An object that contains culture-specific information, such as the language, calendar, and cultural conventions associated with a specific culture.</param>
-        /// <param name="value">The object to convert.</param>
-        /// <param name="destinationType">The type to convert the object to.</param>
-        /// <exception cref="System.NotSupportedException">The conversion cannot be completed.</exception>
-        /// <filterpriority>1</filterpriority>
+        /// <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use as the current culture.</param>
+        /// <param name="value">The <see cref="T:System.Object"/> to convert.</param>
+        /// <param name="destinationType">The <see cref="T:System.Type"/> to convert the object to.</param>
+        /// <exception cref="T:System.NotSupportedException">The conversion cannot be completed.</exception>
         public override Object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, Object value, Type destinationType)
         {
             if (destinationType == null)
@@ -140,9 +136,8 @@ namespace ExtensionLib
         /// <returns>The newly created object, or null if the object could not be created. The default implementation returns null.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
         /// <param name="propertyValues">A dictionary of new property values. The dictionary contains a series of name-value pairs, one for each property returned from <see cref="M:ExtensionLib.RangeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])"/>.</param>
-        /// <exception cref="System.ArgumentException">Either the Minimum or Maximum property holds invalid values.</exception>
-        /// <exception cref="System.ArgumentNullException"><paramref name="propertyValues"/> is null.</exception>
-        /// <filterpriority>1</filterpriority>
+        /// <exception cref="T:System.ArgumentException">Either the Minimum or Maximum property holds invalid values.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="propertyValues"/> is null.</exception>
         public override Object CreateInstance(ITypeDescriptorContext context, IDictionary propertyValues)
         {
             if (propertyValues == null)
@@ -161,7 +156,6 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A boolean value indicating whether the <see cref="M:ExtensionLib.RangeConverter.CreateInstance(System.ComponentModel.ITypeDescriptorContext,System.Collections.IDictionary)"/> method should be called when a change is made to one or more properties of this object.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <filterpriority>1</filterpriority>
         public override Boolean GetCreateInstanceSupported(ITypeDescriptorContext context)
         {
             return true;
@@ -174,7 +168,6 @@ namespace ExtensionLib
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
         /// <param name="value">The value of the object to get the properties for.</param>
         /// <param name="attributes">An array of <see cref="T:System.Attribute"/> objects that describe the properties.</param>
-        /// <filterpriority>1</filterpriority>
         public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, Object value, Attribute[] attributes)
         {
             return TypeDescriptor.GetProperties(typeof (Range<T>), attributes).Sort(new[] { "Minimum, Maximum" });
@@ -185,7 +178,6 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A boolean value indicating whether the <see cref="M:ExtensionLib.RangeConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])"/> method should be called to find the properties of this object.</returns>
         /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
-        /// <filterpriority>1</filterpriority>
         public override Boolean GetPropertiesSupported(ITypeDescriptorContext context)
         {
             return true;

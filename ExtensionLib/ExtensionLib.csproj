@@ -64,6 +64,7 @@
     <Compile Include="ExtensionMethods\StringMethods.cs" />
     <Compile Include="RangeConverter.cs" />
     <Compile Include="SocketMethods.cs" />
+    <Compile Include="StringArrayConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

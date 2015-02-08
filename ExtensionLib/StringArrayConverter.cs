@@ -93,7 +93,7 @@ namespace ExtensionLib
             
             return value == null
                 ? String.Empty
-                : ((String[]) value).JoinFormat(separator, "{0}", x => x.Replace(separator, @"\" + separator));
+                : String.Join(separator, ((String[]) value).Select(x => x.Replace(separator, @"\" + separator)));
         }
     }
 }

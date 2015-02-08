@@ -47,7 +47,7 @@ namespace ExtensionLib
         /// <param name="list">A collection that contains the objects to concatenate.</param>
         /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
-        /// <param name="args">An object array that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
+        /// <param name="args">An array object that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, params Object[] args)
@@ -79,7 +79,7 @@ namespace ExtensionLib
         /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
-        /// <param name="args">An object array that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
+        /// <param name="args">An array object that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
         public static String JoinFormat<T>(this IEnumerable<T> list, String separator, String format, IFormatProvider formatProvider, params Object[] args)

@@ -56,5 +56,18 @@ namespace ExtensionLibTests
                 input,
                 converter.ConvertTo(firstList, typeof (String)));
         }
+
+        [TestMethod]
+        public void TestEscaping()
+        {
+            var converter = new StringArrayConverter();
+            var firstCulture = CultureInfo.GetCultureInfoByIetfLanguageTag("sv-SE");
+            var secondCulture = CultureInfo.InvariantCulture;
+
+            String[] firstList = (String[]) converter.ConvertFrom(null, firstCulture, @"1\;2;3\;4");
+            String[] secondList = (String[]) converter.ConvertFrom(null, secondCulture, @"1\,2,3\,4");
+
+            Assert.AreEqual(firstList.Length, secondList.Length);
+        }
     }
 }

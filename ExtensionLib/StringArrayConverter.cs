@@ -19,6 +19,8 @@
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ExtensionLib
 {
@@ -60,7 +62,15 @@ namespace ExtensionLib
             if (source.Length == 0)
                 return new String[0];
 
-            String[] names = source.Split(new[] { (culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator }, StringSplitOptions.None);
+            String separator = Regex.Escape((culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator);
+            String[] names = Regex.Matches(
+                source,
+                @"(?<=" + separator + @"|^)((?:.*?(?:\\.)?)*)(?=" + separator + @"|$)",
+                RegexOptions.Singleline | RegexOptions.CultureInvariant)
+                .OfType<Match>()
+                .Select(x => Regex.Replace(x.Value, @"\\(.?)", "$1", RegexOptions.CultureInvariant))
+                .ToArray();
+            
             return names;
         }
 
@@ -79,9 +89,11 @@ namespace ExtensionLib
             if (destinationType != typeof (String))
                 throw this.GetConvertToException(value, destinationType);
 
+            String separator = (culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator;
+            
             return value == null
                 ? String.Empty
-                : String.Join((culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator, (String[])value);
+                : ((String[]) value).JoinFormat(separator, "{0}", x => x.Replace(separator, @"\" + separator));
         }
     }
 }

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayEnumerator.cs" />
+    <Compile Include="ArrayEnumerator`1.cs" />
     <Compile Include="ByteArithmetic.cs" />
     <Compile Include="ByteOrder.cs" />
     <Compile Include="ExtensionMethods\ColorHelper.cs" />

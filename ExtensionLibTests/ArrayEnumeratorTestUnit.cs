@@ -17,10 +17,12 @@ namespace ExtensionLibTests
             array[3, 1] = 1;
             array[3, 6] = 1;
 
-            Int32 firstIndex = 3 * 8 + 1;
-            Int32 secondIndex = 3 * 8 + 6;
+            const Int32 firstIndex = 3 * 8 + 1;
+            const Int32 secondIndex = 3 * 8 + 6;
 
-            var enumerator = new ArrayEnumerator<Int32>(array);
+            //var enumerator = new ArrayEnumerator<Int32>(array);
+            //var enumerator = array.GetArrayEnumerator<Int32>();
+            var enumerator = array.GetArrayEnumerator();
 
             while (enumerator.MoveNext())
             {

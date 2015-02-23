@@ -26,19 +26,20 @@ namespace ExtensionLib
     /// <summary>
     /// Supports a simple iteration over a generic collection while providing information relative to the position of the enumerator.
     /// </summary>
-    public class ArrayEnumerator : IEnumerator
+    /// <typeparam name="T">The type of objects to enumerate.</typeparam>
+    public class ArrayEnumerator<T> : IEnumerator<T>
     {
-        private readonly IEnumerator enumerator;
+        private readonly IEnumerator<T> enumerator;
         private readonly Int32[] positions;
         private readonly Array array;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ExtensionLib.ArrayEnumerator"/> class.
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.ArrayEnumerator`1"/> class.
         /// </summary>
         protected ArrayEnumerator() { this.Index = -1; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ExtensionLib.ArrayEnumerator"/> class.
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.ArrayEnumerator`1"/> class.
         /// </summary>
         public ArrayEnumerator(Array array)
             : this()
@@ -46,7 +47,7 @@ namespace ExtensionLib
             if (array == null)
                 throw new ArgumentNullException("array");
 
-            this.enumerator = array.GetEnumerator();
+            this.enumerator = array.Cast<T>().GetEnumerator();
             this.array = array;
             this.positions = new Int32[array.Rank];
             this.positions[this.positions.Length - 1] = -1;
@@ -61,6 +62,14 @@ namespace ExtensionLib
         /// Gets the current positions within the multiple dimensions of the enumerator.
         /// </summary>
         public IReadOnlyList<Int32> Positions { get { return this.positions; } }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            this.enumerator.Dispose();
+        }
 
         /// <summary>
         /// Advances the enumerator to the next element of the collection.
@@ -107,23 +116,33 @@ namespace ExtensionLib
         /// Gets the element in the collection at the current position of the enumerator.
         /// </summary>
         /// <returns>The element in the collection at the current position of the enumerator.</returns>
-        public Object Current { get { return this.enumerator.Current; } }
+        public T Current { get { return this.enumerator.Current; } }
+
+        /// <summary>
+        /// Gets the current element in the collection.
+        /// </summary>
+        /// <returns>The current element in the collection.</returns>
+        Object IEnumerator.Current
+        {
+            get { return this.Current; }
+        }
     }
 
     public partial class ExtensionMethods
     {
         /// <summary>
-        /// Returns an <see cref="T:ExtensionLib.ArrayEnumerator"/> for a supplied array.
+        /// Returns an <see cref="T:ExtensionLib.ArrayEnumerator`1"/> for a supplied array.
         /// </summary>
         /// <param name="array">The array to use to create the enumerator.</param>
-        /// <returns>The created <see cref="T:ExtensionLib.ArrayEnumerator"/>.</returns>
+        /// <typeparam name="T">The type of the objects to enumerate.</typeparam>
+        /// <returns>The created <see cref="T:ExtensionLib.ArrayEnumerator`1"/>.</returns>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is null.</exception>
-        public static ArrayEnumerator GetArrayEnumerator(this Array array)
+        public static ArrayEnumerator<T> GetArrayEnumerator<T>(this Array array)
         {
             if (array == null)
                 throw new ArgumentNullException("array");
 
-            return new ArrayEnumerator(array);
+            return new ArrayEnumerator<T>(array);
         }
     }
 }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayEnumerator.cs" />
     <Compile Include="ByteArithmetic.cs" />
     <Compile Include="ByteOrder.cs" />
     <Compile Include="ExtensionMethods\ColorHelper.cs" />

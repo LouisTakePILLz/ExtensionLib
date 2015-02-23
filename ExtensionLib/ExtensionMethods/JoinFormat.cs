@@ -30,7 +30,7 @@ namespace ExtensionLib
         /// </summary>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="objectFormat">A standard or custom object format string.</param>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="list"/> is null.</exception>
@@ -45,7 +45,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="args">An array object that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
@@ -60,7 +60,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="objectFormat">A standard or custom object format string.</param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
@@ -76,7 +76,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
         /// <param name="args">An array object that contains zero or more objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
@@ -92,7 +92,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="predicate">An array that contains zero or more functions that provide objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
@@ -107,7 +107,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="predicate">A function that supplies the objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
         /// <typeparam name="T">The type of the elements to concatenate.</typeparam>
@@ -122,7 +122,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
         /// <param name="predicate">A function that supplies the objects to be used within <see cref="String.Format(String, Object[])"/>.</param>
@@ -138,7 +138,7 @@ namespace ExtensionLib
         /// </summary>
         /// <returns>A string that consists of the formatted representation of the members of <paramref name="list"/> delimited by the <paramref name="separator"/> string. If <paramref name="list"/> has no members, the method returns <see cref="F:System.String.Empty"/>.</returns>
         /// <param name="list">A collection that contains the objects to concatenate.</param>
-        /// <param name="separator">The string to use as a separator. <paramref name="separator"/> is included in the returned string only if <paramref name="list"/> has more than one element.</param>
+        /// <param name="separator">The string to use as a separator. The <paramref name="separator"/> parameter is included in the returned string only if <paramref name="list"/> has more than one element.</param>
         /// <param name="format">A composite format string (see <see cref="String.Format(String, Object[])"/>).</param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
         /// <param name="predicate">An array that contains zero or more functions that provide objects to be used within <see cref="String.Format(String, Object[])"/>.</param>

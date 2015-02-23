@@ -68,5 +68,17 @@ namespace ExtensionLibTests
 
             Assert.AreEqual(firstList.Length, secondList.Length);
         }
+
+        [TestMethod]
+        public void TestCustomSeparator()
+        {
+            var converter = new StringArrayConverter('\x20', StringSplitOptions.RemoveEmptyEntries);
+
+            String[] firstList = (String[]) converter.ConvertFrom(@"test test  ");
+            String[] secondList = (String[]) converter.ConvertFrom(@"test\ test\ ");
+            
+            Assert.AreEqual(firstList.Length, 2);
+            Assert.AreEqual(secondList.Length, 1);
+        }
     }
 }

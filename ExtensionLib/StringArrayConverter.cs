@@ -29,10 +29,35 @@ namespace ExtensionLib
     /// </summary>
     public class StringArrayConverter : TypeConverter
     {
+        private readonly String separator;
+        private readonly StringSplitOptions splitOptions = StringSplitOptions.None;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:ExtensionLib.StringArrayConverter"/> class.
         /// </summary>
         public StringArrayConverter() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.StringArrayConverter"/> class.
+        /// </summary>
+        /// <param name="separator">The separator <see cref="T:System.String"/> used to override the one provided by the culture.</param>
+        /// <param name="options">The <see cref="T:System.StringSplitOptions"/> policy to use for splitting strings.</param>
+        public StringArrayConverter(String separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            this.separator = separator;
+            this.splitOptions = options;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.StringArrayConverter"/> class.
+        /// </summary>
+        /// <param name="separator">The separator <see cref="T:System.Char"/> used to override the one provided by the culture.</param>
+        /// <param name="options">The <see cref="T:System.StringSplitOptions"/> policy to use for splitting strings.</param>        
+        public StringArrayConverter(Char separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            this.separator = separator.ToString();
+            this.splitOptions = options;
+        }
 
         /// <summary>
         /// Determines whether this converter can convert a given source type to the native type of the converter.
@@ -62,16 +87,12 @@ namespace ExtensionLib
             if (source.Length == 0)
                 return new String[0];
 
-            String separator = Regex.Escape((culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator);
-            String[] names = Regex.Matches(
-                source,
-                @"(?<=" + separator + @"|^)((?:.*?(?:\\.)?)*)(?=" + separator + @"|$)",
-                RegexOptions.Singleline | RegexOptions.CultureInvariant)
-                .OfType<Match>()
-                .Select(x => Regex.Replace(x.Value, @"\\(.?)", "$1", RegexOptions.CultureInvariant))
-                .ToArray();
+            String separator = Regex.Escape(this.separator ?? Regex.Escape((culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator));
+            String[] names = Regex.Split(source, @"(?<!\\)" + separator, RegexOptions.Singleline | RegexOptions.CultureInvariant);
             
-            return names;
+            return splitOptions == StringSplitOptions.RemoveEmptyEntries
+                ? names.Where(x => !String.IsNullOrEmpty(x)).ToArray()
+                : names;
         }
 
         /// <summary>
@@ -89,7 +110,7 @@ namespace ExtensionLib
             if (destinationType != typeof (String))
                 throw this.GetConvertToException(value, destinationType);
 
-            String separator = (culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator;
+            String separator = this.separator ?? (culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator;
             
             return value == null
                 ? String.Empty

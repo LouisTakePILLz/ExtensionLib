@@ -17,7 +17,9 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace ExtensionLib
 {
@@ -30,7 +32,7 @@ namespace ExtensionLib
     ////[Editor(typeof (RangeEditor<>), typeof (UITypeEditor))]
     ////[Editor(typeof (RangeEditor), typeof(UITypeEditor))]
     [TypeConverter(typeof (RangeConverter<>))]
-    public struct Range<T> where T : IComparable, IFormattable
+    public struct Range<T> where T : IComparable
     {
         /// <summary>
         /// Represents a <see cref="T:ExtensionLib.Range`1"/> that holds default <see cref="P:ExtensionLib.Range`1.Minimum"/> and <see cref="P:ExtensionLib.Range`1.Maximum"/> values.
@@ -77,13 +79,23 @@ namespace ExtensionLib
             return String.Format("[{0}, {1}]", this.Minimum, this.Maximum);
         }
 
-        /// <summary>        
+        /// <summary>
         /// Determines if the range is valid.
         /// </summary>
         /// <returns>A boolean value indicating whether the range is valid (i.e. if <see cref="P:ExtensionLib.Range.Minimum"/> is lesser or equal to <see cref="P:ExtensionLib.Range.Maximum"/>.</returns>
         public Boolean IsValid()
         {
-            return this.Minimum.CompareTo(this.Maximum) <= 0;
+            return this.IsValid(Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Determines if the range is valid.
+        /// </summary>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A boolean value indicating whether the range is valid (i.e. if <see cref="P:ExtensionLib.Range.Minimum"/> is lesser or equal to <see cref="P:ExtensionLib.Range.Maximum"/>.</returns>
+        public Boolean IsValid(IComparer<T> comparer)
+        {
+            return comparer.Compare(this.Minimum, this.Maximum) <= 0;
         }
 
         /// <summary>
@@ -93,7 +105,18 @@ namespace ExtensionLib
         /// <returns>A boolean value indicating whether the provided value is inside the range.</returns>
         public Boolean ContainsValue(T value)
         {
-            return (this.Minimum.CompareTo(value) <= 0) && (value.CompareTo(this.Maximum) <= 0);
+            return this.ContainsValue(value, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Determines whether the provided value is inside the range.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A boolean value indicating whether the provided value is inside the range.</returns>
+        public Boolean ContainsValue(T value, IComparer<T> comparer)
+        {
+            return (comparer.Compare(this.Minimum, value) <= 0) && (comparer.Compare(value, this.Maximum) <= 0);
         }
 
         /// <summary>
@@ -103,17 +126,115 @@ namespace ExtensionLib
         /// <returns>A boolean value indicating whether the extrema of this range are inclusive.</returns>
         public Boolean IsInsideRange(Range<T> range)
         {
-            return this.IsValid() && range.IsValid() && range.ContainsValue(this.Minimum) && range.ContainsValue(this.Maximum);
+            return this.IsInsideRange(range, Comparer<T>.Default);
         }
 
         /// <summary>
-        /// Determines whether another range is contained within the bounds of this one.
+        /// Determines whether the bounds of this range are situated within those of the supplied one.
+        /// </summary>
+        /// <param name="range">The parent range to test against.</param>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A boolean value indicating whether the extrema of this range are inclusive.</returns>
+        public Boolean IsInsideRange(Range<T> range, IComparer<T> comparer)
+        {
+            return this.IsValid(comparer) && range.IsValid(comparer) && range.ContainsValue(this.Minimum, comparer) && range.ContainsValue(this.Maximum, comparer);
+        }
+
+        /// <summary>
+        /// Determines whether the supplied range is contained within the bounds of the current one.
         /// </summary>
         /// <param name="range">The child range to test.</param>
-        /// <returns>A boolean value indicating whether the provided range is situated inside this one.</returns>
+        /// <returns>A boolean value indicating whether the provided range is situated inside the current one.</returns>
         public Boolean ContainsRange(Range<T> range)
         {
-            return this.IsValid() && range.IsValid() && this.ContainsValue(range.Minimum) && this.ContainsValue(range.Maximum);
+            return this.ContainsRange(range, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Determines whether the supplied range is contained within the bounds of the current one.
+        /// </summary>
+        /// <param name="range">The child range to test.</param>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A boolean value indicating whether the provided range is situated inside the current one.</returns>
+        public Boolean ContainsRange(Range<T> range, IComparer<T> comparer)
+        {
+            return this.IsValid(comparer) && range.IsValid(comparer) && this.ContainsValue(range.Minimum, comparer) && this.ContainsValue(range.Maximum, comparer);
+        }
+
+        /// <summary>
+        /// Produces the union of two contiguous <see cref="T:ExtensionLib.Range`1"/>.
+        /// </summary>
+        /// <param name="other">The range to join.</param>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A new range combining the furthest extrema.</returns>
+        public Range<T> Union(Range<T> other, IComparer<T> comparer)
+        {
+            if (!this.IsValid(comparer) || !other.IsValid(comparer))
+                throw new InvalidOperationException("Non-linear ranges can not be manipulated.");
+
+            if (this.IsInsideRange(other, comparer))
+                return other;
+
+            if (this.ContainsRange(other, comparer))
+                return this;
+
+            if (comparer.Compare(this.Minimum, other.Minimum) == 0
+                || comparer.Compare(this.Minimum, other.Maximum) == 0
+                || comparer.Compare(this.Maximum, other.Maximum) == 0
+                || comparer.Compare(this.Maximum, other.Minimum) == 0)
+                return new Range<T>(
+                    minimum: comparer.Compare(this.Minimum, other.Minimum) < 0 ? this.Minimum : other.Minimum,
+                    maximum: comparer.Compare(this.Maximum, other.Maximum) > 0 ? this.Maximum : other.Maximum);
+
+            throw new InvalidOperationException("Non-contiguous ranges can not be joined.");
+        }
+
+        /// <summary>
+        /// Produces the union of two contiguous <see cref="T:ExtensionLib.Range`1"/>.
+        /// </summary>
+        /// <param name="other">The range to join.</param>
+        /// <returns>A new range combining the furthest extrema.</returns>
+        public Range<T> Union(Range<T> other)
+        {
+            return this.Union(other, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Produces the intersection of two overlapping <see cref="T:ExtensionLib.Range`1"/>.
+        /// </summary>
+        /// <param name="other">The range to intersect.</param>
+        /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
+        /// <returns>A new range constitued of the furthest shared values.</returns>
+        public Range<T> Intersect(Range<T> other, IComparer<T> comparer)
+        {
+            if (!this.IsValid(comparer) || !other.IsValid(comparer))
+                throw new InvalidOperationException("Non-linear ranges can not be manipulated.");
+
+            var thisContainsMinimum = this.ContainsValue(other.Minimum, comparer);
+            var thisContainsMaximum = this.ContainsValue(other.Maximum, comparer);
+            var otherContainsMinimum = other.ContainsValue(this.Minimum, comparer);
+            var otherContainsMaximum = other.ContainsValue(this.Maximum, comparer);
+
+            if (thisContainsMinimum || thisContainsMaximum || otherContainsMinimum || otherContainsMaximum)
+                return new Range<T>(
+                    minimum: thisContainsMinimum
+                        ? other.Minimum
+                        : (otherContainsMinimum ? this.Minimum : other.Minimum),
+                    maximum: thisContainsMaximum
+                        ? other.Maximum
+                        : (otherContainsMaximum ? this.Maximum : other.Maximum));
+
+            throw new InvalidOperationException("Non-overlapping ranges can not be intersected.");
+        }
+
+        /// <summary>
+        /// Produces the intersection of two overlapping <see cref="T:ExtensionLib.Range`1"/>.
+        /// </summary>
+        /// <param name="other">The range to intersect.</param>
+        /// <returns>A new range constitued of the furthest shared values.</returns>
+        public Range<T> Intersect(Range<T> other)
+        {
+            return this.Intersect(other, Comparer<T>.Default);
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="RangeConverterTestUnit.cs" />
     <Compile Include="StringArrayConverterTestUnit.cs" />
     <Compile Include="ArrayEnumeratorTestUnit.cs" />
+    <Compile Include="RangeTestUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtensionLib\ExtensionLib.csproj">

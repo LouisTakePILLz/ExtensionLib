@@ -75,7 +75,7 @@ namespace ExtensionLib
         /// Advances the enumerator to the next element of the collection.
         /// </summary>
         /// <returns>A boolean value indicating whether the enumerator successfully advanced to the next element (true) or if the enumerator has passed the end of the collection (false).</returns>
-        /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created. </exception>
+        /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created.</exception>
         public Boolean MoveNext()
         {
             if (!this.enumerator.MoveNext())
@@ -106,7 +106,7 @@ namespace ExtensionLib
         /// <summary>
         /// Sets the enumerator to its initial position, which is before the first element in the collection.
         /// </summary>
-        /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created. </exception>
+        /// <exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created.</exception>
         public void Reset()
         {
             this.enumerator.Reset();

@@ -18,7 +18,6 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using ExtensionLib;
 
 namespace ExtensionLibTests
@@ -26,21 +25,6 @@ namespace ExtensionLibTests
     [TestClass]
     public class RangeTestUnit
     {
-        private readonly Comparer<Double> doubleComparer = Comparer<Double>.Create((x, y) =>
-        {
-            long firstValue = BitConverter.DoubleToInt64Bits(x);
-            long secondValue = BitConverter.DoubleToInt64Bits(y);
-            
-            // Compare the bit-sign
-            if (firstValue >> 63 != secondValue >> 63)
-                return firstValue == secondValue ? 0 : firstValue.CompareTo(secondValue);
-
-            long difference = Math.Abs(firstValue - secondValue);
-
-            // Is within the margin of precision loss?
-            return difference <= 1 ? 0 : x.CompareTo(y);
-        });
-
         [TestMethod]
         public void TestJoinLowerBound()
         {
@@ -79,7 +63,7 @@ namespace ExtensionLibTests
         {
             Range<Double> firstRange = new Range<Double>(Double.NegativeInfinity, 5);
             Range<Double> secondRange = new Range<Double>(5, 6);
-            Range<Double> joinedRange = firstRange.Union(secondRange, doubleComparer);
+            Range<Double> joinedRange = firstRange.Union(secondRange, MathHelper.DoubleComparer);
 
             Assert.AreEqual(firstRange.Minimum, joinedRange.Minimum);
             Assert.AreEqual(secondRange.Maximum, joinedRange.Maximum);
@@ -90,7 +74,7 @@ namespace ExtensionLibTests
         {
             Range<Double> firstRange = new Range<Double>(3, 3);
             Range<Double> secondRange = new Range<Double>(-6, 6);
-            Range<Double> intersectRange = firstRange.Intersect(secondRange, doubleComparer);
+            Range<Double> intersectRange = firstRange.Intersect(secondRange, MathHelper.DoubleComparer);
 
             Assert.AreEqual(firstRange.Minimum, intersectRange.Minimum);
             Assert.AreEqual(firstRange.Maximum, intersectRange.Maximum);
@@ -101,7 +85,7 @@ namespace ExtensionLibTests
         {
             Range<Double> firstRange = new Range<Double>(Double.NegativeInfinity, 3);
             Range<Double> secondRange = new Range<Double>(-15, 4);
-            Range<Double> intersectRange = firstRange.Intersect(secondRange, doubleComparer);
+            Range<Double> intersectRange = firstRange.Intersect(secondRange, MathHelper.DoubleComparer);
 
             Assert.AreEqual(secondRange.Minimum, intersectRange.Minimum);
             Assert.AreEqual(firstRange.Maximum, intersectRange.Maximum);

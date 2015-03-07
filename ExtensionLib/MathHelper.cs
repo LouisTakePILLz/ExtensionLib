@@ -145,5 +145,30 @@ namespace ExtensionLib
                 firstSeries.Select(x => x.ToDouble(CultureInfo.CurrentUICulture)),
                 secondSeries.Select(x => x.ToDouble(CultureInfo.CurrentUICulture)));
         }
+
+        public readonly static IComparer<Double> DoubleComparer = CreateDoubleComparer();
+
+        /// <summary>
+        /// Creates a floating-point precision-aware <see cref="T:System.Double"/> comparer.
+        /// </summary>
+        /// <param name="precisionMargin">The absolute margin of error tolerated.</param>
+        /// <returns>The newly created comparer object.</returns>
+        public static IComparer<Double> CreateDoubleComparer(UInt32 precisionMargin = 1)
+        {
+            return Comparer<Double>.Create((x, y) =>
+            {
+                long firstValue = BitConverter.DoubleToInt64Bits(x);
+                long secondValue = BitConverter.DoubleToInt64Bits(y);
+
+                // Compare the bit-sign
+                if (firstValue >> 63 != secondValue >> 63)
+                    return firstValue == secondValue ? 0 : firstValue.CompareTo(secondValue);
+
+                long difference = Math.Abs(firstValue - secondValue);
+
+                // Is within the margin of precision loss?
+                return difference <= precisionMargin ? 0 : x.CompareTo(y);
+            });
+        }
     }
 }

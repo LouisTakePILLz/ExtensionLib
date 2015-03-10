@@ -71,6 +71,17 @@ namespace ExtensionLib
         }
 
         /// <summary>
+        /// Determines whether this converter can convert a given destination type from the native type of the converter.
+        /// </summary>
+        /// <returns>A boolean value indicating whether a <see cref="T:System.String"/> can be converted to this type.</returns>
+        /// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> object that provides a format context.</param>
+        /// <param name="destinationType">The destination <see cref="T:System.Type"/> to test.</param>
+        public override Boolean CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        {
+            return destinationType == typeof (String[]);
+        }
+
+        /// <summary>
         /// Converts the specified object to a <see cref="T:System.String"/> array, using the specified context and culture information.
         /// </summary>
         /// <returns>An <see cref="T:System.Object"/> that represents the converted value.</returns>

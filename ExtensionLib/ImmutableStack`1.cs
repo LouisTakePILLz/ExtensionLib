@@ -68,6 +68,16 @@ namespace ExtensionLib
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="T:ExtensionLib.ImmutableStack`1"/> class.
+        /// </summary>
+        /// <param name="element">The object at the top of the stack.</param>
+        public ImmutableStack(T element)
+        {
+            this.head = element;
+            this.tail = Empty;
+        }
+
+        /// <summary>
         /// Inserts an object at the top of the <see cref="T:ExtensionLib.ImmutableStack`1"/> and returns the newly formed stack.
         /// </summary>
         /// <param name="value">The element to add to the stack.</param>

@@ -33,9 +33,6 @@
     <DocumentationFile>bin\Release\ExtensionLib.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -56,6 +53,8 @@
     <Compile Include="ExtensionMethods\ExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\IndexesOf.cs" />
     <Compile Include="ExtensionMethods\JoinFormat.cs" />
+    <Compile Include="ImmutableStack`1.cs" />
+    <Compile Include="IStack`1.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

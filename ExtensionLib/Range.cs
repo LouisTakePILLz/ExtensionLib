@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 namespace ExtensionLib
 {
@@ -204,7 +203,7 @@ namespace ExtensionLib
         /// </summary>
         /// <param name="other">The range to intersect.</param>
         /// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to compare the entries.</param>
-        /// <returns>A new range constitued of the furthest shared values.</returns>
+        /// <returns>A new range constituted of the furthest shared values.</returns>
         public Range<T> Intersect(Range<T> other, IComparer<T> comparer)
         {
             if (!this.IsValid(comparer) || !other.IsValid(comparer))
@@ -231,7 +230,7 @@ namespace ExtensionLib
         /// Produces the intersection of two overlapping <see cref="T:ExtensionLib.Range`1"/>.
         /// </summary>
         /// <param name="other">The range to intersect.</param>
-        /// <returns>A new range constitued of the furthest shared values.</returns>
+        /// <returns>A new range constituted of the furthest shared values.</returns>
         public Range<T> Intersect(Range<T> other)
         {
             return this.Intersect(other, Comparer<T>.Default);

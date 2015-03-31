@@ -101,7 +101,7 @@ namespace ExtensionLib
             String separator = Regex.Escape(this.separator ?? Regex.Escape((culture ?? CultureInfo.InvariantCulture).TextInfo.ListSeparator));
             String[] names = Regex.Split(source, @"(?<!\\)" + separator, RegexOptions.Singleline | RegexOptions.CultureInvariant);
             
-            return splitOptions == StringSplitOptions.RemoveEmptyEntries
+            return this.splitOptions == StringSplitOptions.RemoveEmptyEntries
                 ? names.Where(x => !String.IsNullOrEmpty(x)).ToArray()
                 : names;
         }
